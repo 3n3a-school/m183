@@ -16,5 +16,9 @@ jobs:
             
       - run: |
           ssh-keyscan -t rsa gitlab.com >> ~/.ssh/known_hosts
-          git fetch --prune
-          git push --prune git@gitlab.com:3n3a/m183.git +refs/remotes/origin/*:refs/heads/* +refs/tags/*:refs/tags/*
+          git remote add sync git@gitlab.com:3n3a/m183.git
+          git remote -v
+          git pull
+          git checkout main
+          git filter-branch -- --all
+          git push -u sync main
