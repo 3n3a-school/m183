@@ -15,5 +15,5 @@ jobs:
             ssh-private-key: ${{ secrets.GITLAB_SSH_PRIVATE_KEY }}
             
       - run: |
-          git remote set-url --add --push origin ssh://git@gitlab.com:3n3a/m183.git
+          git remote set-url --add --push origin git@gitlab.com:3n3a/m183.git
           git push -u origin main
