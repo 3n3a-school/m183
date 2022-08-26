@@ -19,6 +19,8 @@ jobs:
           git clone git@gitlab.com:3n3a/m183.git ../sync
           rsync -av --progress . ../sync --exclude .git
           cd ../sync
+          git config --global user.email "46775561+3n3a@users.noreply.github.com"
+          git config --global user.name "3n3a"
           git add .
           git commit -m "sync from github"
           git push
