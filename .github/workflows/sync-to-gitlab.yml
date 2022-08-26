@@ -18,7 +18,7 @@ jobs:
           ssh-keyscan -t rsa gitlab.com >> ~/.ssh/known_hosts
           git remote add sync git@gitlab.com:3n3a/m183.git
           git remote -v
-          git fetch --all
+          git pull --all
           git checkout main
           git filter-branch -- --all
           git push -u sync main
