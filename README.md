@@ -6,3 +6,6 @@
 ## Posts
 * [Failing Securely](./posts/fail-securely.md)
 * [Keylogger](./posts/keylogger.md)
+
+## Exercises
+* [Keylogger Website](./exercises/a01)
