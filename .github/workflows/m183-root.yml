@@ -19,7 +19,7 @@ jobs:
       - name: Create Release
         run: |
          mkdir release
-         cp -ar README.md
+         cp -ar README.md release
          cp -ar posts/ release
        
       - name: Deploy
