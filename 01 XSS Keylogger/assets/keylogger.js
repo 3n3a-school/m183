@@ -21,9 +21,15 @@ function logInput(suffix, string) {
   });
 }
 
+function logToGUI(keystroke) {
+  let element = document.getElementById('sentStuff')
+  element.innerText += `[${new Date()}] ${keystroke}\n` 
+}
+
 function sendBuffer() {
   if (globalBuffer && globalBuffer.length > 0) {
     logInput('body', globalBuffer)
+    logToGUI(globalBuffer)
     globalBuffer = ""
   }
 }
