@@ -21,6 +21,7 @@ jobs:
          mkdir release
          cp -ar README.md release
          cp -ar posts/ release
+         cp -ar exercises/ release
        
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
