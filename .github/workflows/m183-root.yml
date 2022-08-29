@@ -15,6 +15,12 @@ jobs:
       group: ${{ github.workflow }}-${{ github.ref }}
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Create Release
+        run: |
+         mkdir release
+         cp -ar README.md
+         cp -ar posts/ release
        
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
@@ -26,3 +32,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./
           destination_dir: ./
+          enable_jekyll: true
