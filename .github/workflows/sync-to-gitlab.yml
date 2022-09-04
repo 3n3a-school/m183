@@ -17,6 +17,7 @@ jobs:
       - run: |
           ssh-keyscan -t rsa gitlab.com >> ~/.ssh/known_hosts
           git clone git@gitlab.com:3n3a/m183.git ../sync
+          (cd ../sync && rm -rf *)
           rsync -av --progress . ../sync --exclude .git
           cd ../sync
           git config --global user.email "46775561+3n3a@users.noreply.github.com"

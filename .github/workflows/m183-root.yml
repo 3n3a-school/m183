@@ -15,6 +15,13 @@ jobs:
       group: ${{ github.workflow }}-${{ github.ref }}
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Create Release
+        run: |
+         mkdir release
+         cp -ar README.md release
+         cp -ar posts/ release
+         cp -ar exercises/ release
        
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
@@ -24,5 +31,6 @@ jobs:
         if: ${{ github.ref == 'refs/heads/main' }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: './01 XSS Keylogger'
-          destination_dir: ./a01
+          publish_dir: ./release
+          destination_dir: ./
+          enable_jekyll: true

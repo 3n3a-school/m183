@@ -13,4 +13,4 @@ _keypress_ or _keydown_ events. Meaning _keyup_ won't interfere with these.
 
 On the final webpage on can press any key on the site, or input anything into the search field. And it will be sent to the server every half a second. 
 
-[View the result here](https://3n3a-school.github.io/m183/a01/)
+[View the result here](https://3n3a-school.github.io/m183/exercises/a01/)
