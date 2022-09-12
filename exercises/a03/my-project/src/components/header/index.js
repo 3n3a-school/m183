@@ -7,7 +7,6 @@ const Header = () => (
 		<h1>Sample Login App</h1>
 		<nav>
 			<Link activeClassName={style.active} href="/">Home</Link>
-			<Link activeClassName={style.active} href="/login">Login</Link>
 		</nav>
 	</header>
 );

@@ -1,7 +1,4 @@
 import { h } from 'preact';
-import { Router } from 'preact-router';
-
-
 
 import Header from './header';
 
@@ -11,9 +8,7 @@ import Login from '../routes/login';
 const App = () => (
 	<div id="app">
 		<Header />
-		<Router>
-			<Login path="/" />
-		</Router>
+		<Login path="/" />
 	</div>
 )
 
