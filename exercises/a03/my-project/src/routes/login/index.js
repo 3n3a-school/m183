@@ -19,7 +19,7 @@ const options = {
 zxcvbnOptions.setOptions(options)
 
 class LoginForm extends Component {
-	state = { value: '', strength: {} };
+	state = { value: '', strength: {}, hash: {} };
   
 	onSubmit = e => {
 	  e.preventDefault();
@@ -28,10 +28,18 @@ class LoginForm extends Component {
 	onInput = e => {
 	  const { value } = e.target;
 	  const strength = zxcvbn(value);
+	  const hash = this.calcHash(value);
 	  this.setState({ value, strength })
 	}
   
-	render(_, { value, strength }) {
+	calcHash = async password => {
+		// eslint-disable-next-line no-undef
+		const h = await argon2.hash({ pass: password, salt: `th1s155alt1${password}` })
+		console.log(h)
+		this.setState({ hash: h })
+	}
+
+	render(_, { value, strength, hash }) {
 	  return (
 		<div class={style.twocols}>
 			<form onSubmit={this.onSubmit} class={style.login}>
@@ -50,6 +58,7 @@ class LoginForm extends Component {
 			<button type="submit">Submit</button>
 			</form>
 			<JSONPretty class={style.login} id="json-pretty" data={strength} />
+			<JSONPretty class={style.login} id="json-pretty" data={hash} />
 		</div>
 	  );
 	}
