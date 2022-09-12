@@ -12,7 +12,7 @@ const App = () => (
 		<Header />
 		<Router>
 			<Home path="/" />
-			<Login path="/login" />
+			<Login path="login" />
 		</Router>
 	</div>
 )
