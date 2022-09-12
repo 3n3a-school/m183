@@ -96,6 +96,9 @@ html, body {
 	display: flex;
 	-ms-flex-direction: row;
 	    flex-direction: row;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
 }
 
-/*# sourceMappingURL=ssr-bundle.c30b4.css.map*/
+
+/*# sourceMappingURL=ssr-bundle.8e136.css.map*/
