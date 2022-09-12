@@ -1,7 +1,7 @@
 {
   "name": "my-project",
   "short_name": "my-project",
-  "start_url": "/",
+  "start_url": "/m183/exercises/a03",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#fff",
