@@ -12,7 +12,7 @@ jobs:
         
       - uses: webfactory/ssh-agent@v0.5.4
         with:
-            ssh-private-key: ${{ secrets.GITLAB_SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.GITLAB_SSH_PRIVATE_KEY }}
             
       - run: |
           ssh-keyscan -t rsa gitlab.com >> ~/.ssh/known_hosts
