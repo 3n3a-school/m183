@@ -15,6 +15,15 @@ jobs:
       group: ${{ github.workflow }}-${{ github.ref }}
     steps:
       - uses: actions/checkout@v3
+
+      - name: Build a03
+        run: |
+         cd exercises/a03/my-project
+         npm i
+         npm run build
+         cp -ar build/* ../
+         cd ..
+         rm -rf my-project
       
       - name: Create Release
         run: |
