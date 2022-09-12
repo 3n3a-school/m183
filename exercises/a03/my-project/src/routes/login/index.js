@@ -54,6 +54,7 @@ class LoginForm extends Component {
 						<p class={style.help}>{strength.feedback.suggestions}</p>
 					</>
 				}
+                                { hash.encoded && <p>Hash: {hash.encoded}</p> }
 			</div>
 			<button type="submit">Submit</button>
 			</form>
