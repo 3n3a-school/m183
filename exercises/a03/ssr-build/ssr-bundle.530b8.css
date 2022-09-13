@@ -91,14 +91,28 @@ html, body {
 	color: lightskyblue;
 }
 
+.button__aKaTR {
+	border: 1px solid black;
+	border-radius: 5px;
+	padding: 1em 2em;
+	background-color: lightblue;
+}
+
 .twocols__aVPn9 {
 	display: -ms-flexbox;
 	display: flex;
-	-ms-flex-direction: row;
-	    flex-direction: row;
-        -ms-flex-wrap: wrap;
-            flex-wrap: wrap;
+	-ms-flex-direction: column;
+	    flex-direction: column;
 }
 
+.hashResult__uKZVg {
+	overflow: scroll;
+}
 
-/*# sourceMappingURL=ssr-bundle.8e136.css.map*/
+.debugging__SOmd3 {
+	padding: 1em 2em;
+	margin: 8rem 20px;
+	border: 1px solid black;
+}
+
+/*# sourceMappingURL=ssr-bundle.530b8.css.map*/
