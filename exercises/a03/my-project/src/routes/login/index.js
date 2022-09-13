@@ -72,6 +72,7 @@ class LoginForm extends Component {
 	render(_, { value, strength, hash }) {
 	  return (
 		<div class={style.twocols}>
+                  <div>
 			<form onSubmit={this.onSubmit} class={style.login}>
 			<div class={style.field}>
 				<label for="password">Passwort</label>
@@ -87,8 +88,9 @@ class LoginForm extends Component {
                                 { hash.encoded && <p>Hash: {hash.encoded}</p> }
 			</div>
 			<button type="submit">Submit</button>
-                        <button onClick={this.verifyHash}>Verify Hash</button>
 			</form>
+                        <button onClick={this.verifyHash}>Verify Hash</button>
+                    </div>
 			<JSONPretty class={style.login} id="json-pretty" data={strength} />
 			<JSONPretty class={style.login} id="json-pretty" data={hash} />
 		</div>
