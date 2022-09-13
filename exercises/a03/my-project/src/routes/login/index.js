@@ -45,7 +45,7 @@ class LoginForm extends Component {
 			<form onSubmit={this.onSubmit} class={style.login}>
 			<div class={style.field}>
 				<label for="password">Passwort</label>
-				<input id="password" type="search" autoComplete='off' value={value} onInput={this.onInput} />
+				<input id="password" type="search" autoComplete='off' minLength={8} value={value} onInput={this.onInput} />
 				<meter value={strength.score} max="4"> {strength.score}/4 </meter> 
 				{
 					strength.feedback &&
