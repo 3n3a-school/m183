@@ -30,7 +30,7 @@ class LoginForm extends Component {
 	onInput = e => {
 	  const { value } = e.target;
 	  const strength = zxcvbn(value);
-	  const hash = this.calcHash(value);
+	  this.calcHash(value);
 	  this.setState({ value, strength })
 	}
   
@@ -38,7 +38,7 @@ class LoginForm extends Component {
 		const salt = CryptoJS.lib.WordArray.random(256 / 8);
 		const hashSalt = CryptoJS.enc.Hex.stringify(salt);
 		// eslint-disable-next-line no-undef
-		const h = await argon2.hash(
+		argon2.hash(
 			{ 
 				pass: password, 
 				salt: hashSalt,
@@ -46,8 +46,14 @@ class LoginForm extends Component {
 				mem: 4096
 			}
 		)
-		console.log(h)
-		this.setState({ hash: h })
+			.then((h) => {
+				console.log(h)
+				this.setState({ hash: h })
+			})
+			.catch((e) => {
+				console.error(e)
+				alert(e)
+			})
 	}
 
 	render(_, { value, strength, hash }) {
