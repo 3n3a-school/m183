@@ -57,6 +57,18 @@ class LoginForm extends Component {
 			})
 	}
 
+        verifyHash = async () => {
+          // eslint-disable-next-line no-undef
+          argon2.verify({ pass: this.state.value, encoded: this.state.hash.encoded })
+            .then(() => {
+              alert('Hash Verification Passed ✅')
+              console.log('OK')
+            })
+            .catch(e => {
+              alert(`${e.code}: ${e.message}`)
+              console.error(e.message, e.code)
+            })
+        }
 	render(_, { value, strength, hash }) {
 	  return (
 		<div class={style.twocols}>
@@ -75,6 +87,7 @@ class LoginForm extends Component {
                                 { hash.encoded && <p>Hash: {hash.encoded}</p> }
 			</div>
 			<button type="submit">Submit</button>
+                        <button onClick={this.verifyHash}>Verify Hash</button>
 			</form>
 			<JSONPretty class={style.login} id="json-pretty" data={strength} />
 			<JSONPretty class={style.login} id="json-pretty" data={hash} />
