@@ -7,6 +7,8 @@ import zxcvbnEnPackage from '@zxcvbn-ts/language-en'
 
 import JSONPretty from 'react-json-pretty';
 
+import CryptoJS from 'crypto-js';
+
 const options = {
   translations: zxcvbnEnPackage.translations,
   graphs: zxcvbnCommonPackage.adjacencyGraphs,
@@ -33,8 +35,17 @@ class LoginForm extends Component {
 	}
   
 	calcHash = async password => {
+		const salt = CryptoJS.lib.WordArray.random(256 / 8);
+		const hashSalt = CryptoJS.enc.Hex.stringify(salt);
 		// eslint-disable-next-line no-undef
-		const h = await argon2.hash({ pass: password, salt: `th1s155alt1${password}` })
+		const h = await argon2.hash(
+			{ 
+				pass: password, 
+				salt: hashSalt,
+				time: 11,
+				mem: 4096
+			}
+		)
 		console.log(h)
 		this.setState({ hash: h })
 	}
