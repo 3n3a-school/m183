@@ -19,8 +19,24 @@
 	color: lightskyblue;
 }
 
+.button {
+	border: 1px solid black;
+	border-radius: 5px;
+	padding: 1em 2em;
+	background-color: lightblue;
+}
+
 .twocols {
 	display: flex;
-	flex-direction: row;
-        flex-wrap: wrap;
+	flex-direction: column;
+}
+
+.hashResult {
+	overflow: scroll;
+}
+
+.debugging {
+	padding: 1em 2em;
+	margin: 8rem 20px;
+	border: 1px solid black;
 }
