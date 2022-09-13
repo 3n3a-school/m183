@@ -16,5 +16,6 @@ html, body {
 }
 
 #app {
+	margin-top: 56px;
 	height: 100%;
 }

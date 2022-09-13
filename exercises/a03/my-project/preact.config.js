@@ -7,5 +7,7 @@
  * @param {import('preact-cli').Helpers} helpers - object with useful helpers for working with the webpack config
  */
 export default (config, env, helpers) => {
-	config.output.publicPath = '/m183/exercises/a03/';
+	if (env.production) {
+		config.output.publicPath = '/m183/exercises/a03/';
+	}
 };

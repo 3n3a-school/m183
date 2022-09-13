@@ -6,6 +6,7 @@ import zxcvbnCommonPackage from '@zxcvbn-ts/language-common'
 import zxcvbnEnPackage from '@zxcvbn-ts/language-en'
 
 import JSONPretty from 'react-json-pretty';
+import 'react-json-pretty/themes/1337.css';
 
 import CryptoJS from 'crypto-js';
 
@@ -80,7 +81,7 @@ class LoginForm extends Component {
 		return (
 			<div class={style.twocols}>
 				<div>
-					<form onSubmit={this.onSubmit} class={style.login}>
+					<form onSubmit={this.onSubmit} class={style.container}>
 						<div class={style.field}>
 							<label for="password">Passwort</label>
 							<input id="password" type="search" autoComplete='off' minLength={12} value={value} onChange={this.onInput} />
@@ -96,16 +97,18 @@ class LoginForm extends Component {
 						{(hash.encoded && value) && <p class={style.hashResult}>Hash: {hash.encoded}</p>}
 						<button class={style.button} disabled={isSubmitDisabled} type="submit">Submit</button>
 					</form>
-					<div class={style.login}>
-						<button class={style.button} onClick={this.verifyHash}>Verify Hash</button>
+					<div class={style["container-ls"]}>
+						<button class={style.button2} disabled={isSubmitDisabled || !hash.encoded} onClick={this.verifyHash}>Verify Hash</button>
 					</div>
 				</div>
-				<details class={style.debugging}>
+				<details class={style.debuggingContainer}>
 					<summary>
 						Debugging Output
 					</summary>
-					<JSONPretty class={style.login} id="json-pretty" data={strength} />
-					<JSONPretty class={style.login} id="json-pretty" data={hash} />
+					<div class={style.innerContent}>
+						<JSONPretty data={strength} />
+						<JSONPretty data={hash} />
+					</div>
 				</details>
 			</div>
 		);

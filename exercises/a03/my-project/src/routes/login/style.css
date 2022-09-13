@@ -1,16 +1,104 @@
-.login {
-	padding: 8rem 20px;
+/* Layout */
+.flex-cols {
+	display: flex;
+	flex-direction: column;
+}
+
+.container {
+	padding: 3rem 4rem;
 	min-height: 100%;
 	margin-left: 2em;
 	margin-right: 2em;
 }
 
+.container-ls {
+	padding: 1rem 4rem;
+	min-height: 100%;
+	margin-left: 2em;
+	margin-right: 2em;
+}
+
+.container input {
+	font-size: .9rem;
+	padding: .75em .6em;
+}
+
+.container meter {
+	width: 100%;
+	height: 1.25rem;
+}
+
+.debuggingContainer {
+	margin: 8rem 20px;
+	border: 1px solid black;
+}
+
+.innerContent {
+	padding-left: 2em;
+	padding-right: 2em;
+}
+
+.debuggingContainer summary {
+	padding: 1em 2em;
+	background-color: palegoldenrod;
+}
+
+.debuggingContainer[open] {
+	padding-bottom: 1em;
+}
+
+.debuggingContainer[open] summary {
+	margin-bottom: 2em;
+	border-bottom: 1px solid black;
+}
+
+/* Form Related */
 .field {
 	display: flex;
 	flex-direction: column;
-	max-width: 200px;
+	max-width: 36rem;
+	margin-bottom: 1em;
 }
 
+.button {
+	font-size: .9rem;
+	cursor: pointer;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	padding: 1em 2em;
+	background-color: rgb(175, 68, 202);
+	box-shadow: 0px 10px 10px -3px rgba(0,0,0,0.1);
+}
+
+.button:hover {
+	background-color: rgb(123, 44, 143);
+}
+
+.button:disabled {
+	background-color: rgb(147, 129, 151);
+}
+
+.button2 {
+	font-size: .9rem;
+	cursor: pointer;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	padding: 1em 2em;
+	background-color: rgb(68, 202, 128);
+	box-shadow: 0px 10px 10px -3px rgba(0,0,0,0.1);
+}
+
+.button2:hover {
+	background-color: rgb(44, 143, 94);
+}
+
+.button2:disabled {
+	background-color: rgb(102, 143, 122);
+}
+
+/* Output Related */
 .warning {
 	color: orange;
 }
@@ -19,24 +107,6 @@
 	color: lightskyblue;
 }
 
-.button {
-	border: 1px solid black;
-	border-radius: 5px;
-	padding: 1em 2em;
-	background-color: lightblue;
-}
-
-.twocols {
-	display: flex;
-	flex-direction: column;
-}
-
 .hashResult {
 	overflow: scroll;
-}
-
-.debugging {
-	padding: 1em 2em;
-	margin: 8rem 20px;
-	border: 1px solid black;
 }
