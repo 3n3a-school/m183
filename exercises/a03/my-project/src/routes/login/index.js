@@ -25,7 +25,7 @@ class LoginForm extends Component {
   
 	onSubmit = e => {
 	  e.preventDefault();
-          this.calcHash(state.value);
+          this.calcHash(this.state.value);
 	}
   
 	onInput = e => {
