@@ -10,6 +10,7 @@
 
 * [Failing Securely](./posts/fail-securely.md)
 * [Keylogger](./posts/keylogger.md)
+* [Datenschutz- / sicherheit Schweiz](./posts/datatransfer-switzerland.md)
 
 ## Exercises
 
