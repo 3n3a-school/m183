@@ -25,7 +25,7 @@
     "jest": "29.0.3",
     "jest-preset-preact": "4.0.5",
     "preact-cli": "3.4.1",
-    "sirv-cli": "1.0.14"
+    "sirv-cli": "2.0.2"
   },
   "dependencies": {
     "@types/crypto-js": "4.1.1",
