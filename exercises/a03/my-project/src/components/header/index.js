@@ -4,7 +4,7 @@ import style from './style.css';
 
 const Header = () => (
 	<header class={style.header}>
-		<h1>Sample Login App</h1>
+		<h1>Password Strength Test</h1>
 		<nav>
 			<Link activeClassName={style.active} href="/">Home</Link>
 		</nav>
