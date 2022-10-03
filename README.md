@@ -17,3 +17,4 @@
 * [Keylogger Website](./exercises/a01)
 * [UI Redressing](./exercises/a02)
 * [Passwort Stärke Messen](./exercises/a03)
+* [HTTP Basic / Digest Authentication](./exercises/a05)
