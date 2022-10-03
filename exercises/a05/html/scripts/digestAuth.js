@@ -18,7 +18,7 @@ function loadData(event) {
     fetch(url)
         .then(response => {
             // Since you're not yet authenticated, we expect the request to fail...
-            const unauthorized = 0; // TODO: Insert correct http response code here (Unauthorized) */
+            const unauthorized = 401;
             if (response.status === unauthorized) {
                 return extractWwwAuthenticateHeaderData(response);
             } else {
@@ -32,6 +32,7 @@ function loadData(event) {
         .then(digestParameters => {
             const stringParts = Object.entries(digestParameters).map(([key, value]) => `${key}=${value}`);
             const digest = stringParts.join(', ');
+            console.log("Sending digest:", digest)
             return fetch(url, {
                 headers: {
                     'Authorization': `Digest ${digest}`,
@@ -71,6 +72,17 @@ function extractWwwAuthenticateHeaderData(response) {
     return wwwAuthenticateHeaderData;
 }
 
+
+function getRandomString(length) {
+    const abc = 'abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split("")
+    let out = "";
+    for (let index = 0; index < length; index++) {
+        const randomChar = abc[Math.floor(abc.length * Math.random())];
+        out += randomChar;
+    }
+    return out;
+}
+
 /**
  * Generates and returns on object containing all relevant data for manual http digest authentication.
  *
@@ -89,22 +101,38 @@ function generateDigestAuthenticationData(wwwAuthenticationHeaderData) {
     // Read credentials from input fields
     const [username, password] = getCredentials();
 
+    // get stuff from headers
+    const { realm, nonce, qop } = wwwAuthenticationHeaderData;
+    const digestUri = path;
+
     /**
      * TODO: Implement this function!
      * Stick to the structure given by the below comments and don't forget to read the doc-block of this function ;-)
      */
 
     // Generate values for 'nc' and 'cnonce'. These values might be fictional (but sensible).
-
+    const nc = '00000001';
+    const cnonce = getRandomString(20);
 
 
     // Generate hashes (usually called ha1, ha2 and response)
-
+    const ha1 = md5(`${username}:${realm}:${password}`);
+    const ha2 = md5(`GET:${digestUri}`);
+    const response = md5(`${ha1}:${nonce}:${nc}:${cnonce}:${qop}:${ha2}`);
 
 
     // Return digest header data as a javascript object containing all (nine) relevant directives.
     return {
         // username, realm, and so on...
+        algorithm: 'MD5',
+        username: `"${username}"`,
+        realm: `"${realm}"`,
+        nc: nc,
+        cnonce: `"${cnonce}"`,
+        nonce: `"${nonce}"`,
+        qop: qop,
+        response: `"${response}"`,
+        uri: `"${digestUri}"`
     };
 }
 
