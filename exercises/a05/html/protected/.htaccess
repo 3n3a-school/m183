@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "GIBZ M183"
+AuthUserFile .htpasswd
+Require valid-user

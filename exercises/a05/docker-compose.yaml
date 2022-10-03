@@ -1,0 +1,9 @@
+version: "3.2"
+services:
+  apache:
+    build: './Docker/apache'
+    ports:
+      - "8080:80"
+    volumes:
+      - ./html/:/var/www/html
+    # command:  && httpd-foreground
