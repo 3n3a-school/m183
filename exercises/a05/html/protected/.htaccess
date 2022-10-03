@@ -1,4 +1,4 @@
 AuthType Basic
 AuthName "GIBZ M183"
-AuthUserFile .htpasswd
+AuthUserFile /var/www/html/protected/.htpasswd
 Require valid-user
