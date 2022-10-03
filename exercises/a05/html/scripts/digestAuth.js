@@ -105,11 +105,6 @@ function generateDigestAuthenticationData(wwwAuthenticationHeaderData) {
     const { realm, nonce, qop } = wwwAuthenticationHeaderData;
     const digestUri = path;
 
-    /**
-     * TODO: Implement this function!
-     * Stick to the structure given by the below comments and don't forget to read the doc-block of this function ;-)
-     */
-
     // Generate values for 'nc' and 'cnonce'. These values might be fictional (but sensible).
     const nc = '00000001';
     const cnonce = getRandomString(20);
