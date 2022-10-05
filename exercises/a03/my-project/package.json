@@ -36,7 +36,7 @@
     "base64-loader": "1.0.0",
     "crypto-js": "4.1.1",
     "history": "5.3.0",
-    "preact": "10.11.0",
+    "preact": "10.11.1",
     "preact-render-to-string": "5.2.4",
     "preact-router": "4.1.0",
     "react-json-pretty": "2.2.0"
