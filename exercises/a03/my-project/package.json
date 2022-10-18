@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "@types/crypto-js": "4.1.1",
-    "@zxcvbn-ts/core": "2.0.5",
+    "@zxcvbn-ts/core": "2.1.0",
     "@zxcvbn-ts/language-common": "2.0.1",
     "@zxcvbn-ts/language-en": "2.1.0",
     "argon2-browser": "1.18.0",
