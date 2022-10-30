@@ -17,4 +17,5 @@ the string.
 
 ## Creating a Blog Post
 
-tbd
+After having read the OWASP article, i tried out not sending the token. Voilà! The token
+isn't even needed.
