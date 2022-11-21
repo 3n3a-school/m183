@@ -34,3 +34,15 @@ was, wen und wo ich zu tun habe.
 Als Beispiel wir [diese Schwachstelle](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4093) genommen
 welche um SQL-Injection handelt auf einer PHP-Webseite. auch beschrieben sind das Risiko dieser Schwachstelle
 und verlinkt sind die Proofs, dass diese Attacke möglich ist und je nachdem auch ein Fix dazu.
+
+## Swisscom Report
+
+| Wer? | Was? | Wozu? |
+| --- | --- | --- |
+| Swidscom | [Report](https://www.swisscom.ch/content/dam/swisscom/de/about/news/2021/04/16-woher-die-gefahr-droht/sc_sr_de_20210413final.pdf.res/sc_sr_de_20210413final.pdf) | Zur Information der Öffentlichkeit über Schwachstellen und konkrete Inventarisierung davon |
+
+| Persönlicher Nutzen | Prpfessioneller Nutzen | Gruppierung |
+| --- | --- | --- |
+| Informativ wenn ich selber ein Netzwerk habe | Sehr wichtig, da wir Schwachstellen in unserer Software / Infrastruktur finden müssen, Vertrag mit Kunden | fachspezifisch, allgemein |
+ 
+### Kurzzusammenfassung
