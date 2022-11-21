@@ -46,3 +46,7 @@ und verlinkt sind die Proofs, dass diese Attacke möglich ist und je nachdem auc
 | Informativ wenn ich selber ein Netzwerk habe | Sehr wichtig, da wir Schwachstellen in unserer Software / Infrastruktur finden müssen, Vertrag mit Kunden | fachspezifisch, allgemein |
  
 ### Kurzzusammenfassung
+
+Allgemeine Security Awareness für Privatpersonen, sowie auch 
+Unternehmen. Zu spezifischen Themen hat es im Report noch detaillierte Infos
+bzgl wie man diese Bedrohungen angehen kann und auch was diese überhaupt sind.
